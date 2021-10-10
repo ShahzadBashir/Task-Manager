@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row mt-2">
+        <div class="col-12">
+            <mat-card>
+                <mat-card-title>Task</mat-card-title>
+                <mat-card-subtitle>Add & Assign Task</mat-card-subtitle>
+                <mat-card-content>
+                    <form [formGroup]="addTaskForm">
+                        <div class="form-row justify-content-center">
+                            <div class="col-10">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Task Name</mat-label>
+                                    <input matInput placeholder="Name" formControlName="name" required>
+                                    <mat-error *ngIf="name && name.hasError('required') && name.touched">you must enter a value</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-10">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Task Description</mat-label>
+                                    <textarea matInput formControlName="description"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </form>
+                </mat-card-content>
+                <mat-card-actions class="text-right">
+                    <button mat-raised-button [disabled]="addTaskForm.invalid" (click)="AddTask()" color="primary">Add</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
