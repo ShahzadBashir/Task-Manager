@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl, Validators} from '@angular/forms'
-
+import {TaskServicesService} from '../services/Task/task-services.service'
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
@@ -11,7 +11,7 @@ export class AddTaskComponent implements OnInit {
     name:new FormControl('',[Validators.required]),
     description:new FormControl('')
   })
-  constructor() { }
+  constructor(private addTaskService:TaskServicesService) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +22,9 @@ export class AddTaskComponent implements OnInit {
 
   AddTask(){
     if(this.addTaskForm.valid){
+      this.addTaskService.AddTask(this.addTaskForm.value).subscribe((result)=>{
+        
+      });
     }    
   }
 }
