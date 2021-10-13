@@ -23,7 +23,7 @@ export class AddTaskComponent implements OnInit {
   AddTask(){
     if(this.addTaskForm.valid){
       this.addTaskService.AddTask(this.addTaskForm.value).subscribe((result)=>{
-        
+        console.log(result);
       });
     }    
   }

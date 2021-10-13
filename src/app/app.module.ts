@@ -9,6 +9,7 @@ import {MaterialModule} from './material/material.module';
 import { AddTaskComponent } from './add-task/add-task.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {AccountModule} from './account/account.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {HttpClientModule} from '@angular/common/http';
     NgbModule,
     MaterialModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AccountModule
   ],
   providers: [],
   bootstrap: [AppComponent]
