@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl,FormGroup,Validators} from '@angular/forms'
+import {FormControl,FormGroup,Validators} from '@angular/forms';
+import {AccountService} from '../../services/Account/account.service';
 
 @Component({
   selector: 'app-register',
@@ -11,11 +12,10 @@ export class RegisterComponent implements OnInit {
     firstname:new FormControl('',[Validators.required]),
     lastname:new FormControl('',[Validators.required]),
     emailaddress:new FormControl('',[Validators.required,Validators.email]),
-    password:new FormControl('',[Validators.required,Validators.minLength(6)]),
-    description:new FormControl('')
+    password:new FormControl('',[Validators.required,Validators.minLength(6)])
   })
   hide = true;
-  constructor() { }
+  constructor(private accountService:AccountService) { }
 
   ngOnInit(): void {
   }
@@ -32,5 +32,15 @@ export class RegisterComponent implements OnInit {
     return this.SignupForm.get('password');
   }
 
-  Signup(){}
+  Signup(){
+    this.accountService.Signup(this.SignupForm.value).subscribe((success)=>{
+      alert("Success");
+      console.log(success);
+      this.SignupForm.reset();
+    },
+    (err)=>{
+      alert("Failed");
+      console.log(err.error.message);
+    });
+  }
 }
