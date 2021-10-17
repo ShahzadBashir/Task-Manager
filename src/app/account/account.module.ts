@@ -4,9 +4,11 @@ import { RegisterComponent } from './register/register.component';
 import {MaterialModule} from '../material/material.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,

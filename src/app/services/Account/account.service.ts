@@ -4,10 +4,12 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class AccountService {
-
   constructor(private http:HttpClient) { }
-  private ApiUrl="http://localhost:5000/Account/Signup";
+  private ApiUrl="http://localhost:5000";
   Signup(user:any){
-    return this.http.post(this.ApiUrl,user);
+    return this.http.post(this.ApiUrl+'/Account/Signup',user);
+  }
+  Login(user:any){
+    return this.http.post(this.ApiUrl+'/Auth',user);
   }
 }

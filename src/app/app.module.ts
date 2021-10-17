@@ -8,8 +8,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MaterialModule} from './material/material.module';
 import { AddTaskComponent } from './add-task/add-task.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AccountModule} from './account/account.module';
+import {TokenInterceptInterceptor} from './interceptors/token-intercept.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,13 @@ import {AccountModule} from './account/account.module';
     HttpClientModule,
     AccountModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row justify-content-center mt-2">
+        <div class="col-lg-6">
+            <mat-card>
+                <mat-card-title>Login</mat-card-title>
+                <mat-card-subtitle>Get Connected</mat-card-subtitle>
+                <mat-card-content>
+                    <form [formGroup]="LoginForm">
+                        <div class="form-row justify-content-center">
+                            <div class="col-10">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Email Address</mat-label>
+                                    <input matInput placeholder="Email Address" formControlName="emailaddress" required>
+                                    <mat-error *ngIf="emailaddress && emailaddress.hasError('required') && emailaddress.touched">you must enter a value</mat-error>
+                                    <mat-error *ngIf="emailaddress && emailaddress.hasError('email') && emailaddress.touched">you must enter a valid value</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-10">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Enter your password</mat-label>
+                                    <input matInput [type]="hide ? 'password' : 'text'" required formControlName="password">
+                                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                    <mat-error *ngIf="password && password.hasError('required') && password.touched">you must enter a value</mat-error>
+                                    <mat-error *ngIf="password && password.hasError('minlength') && password.touched">you must enter a value of 6 characters</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </form>
+                </mat-card-content>
+                <mat-card-actions class="text-right">
+                    <button mat-raised-button [disabled]="LoginForm.invalid" (click)="Login()" color="primary">Login</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
